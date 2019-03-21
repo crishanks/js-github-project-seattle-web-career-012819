@@ -7,6 +7,7 @@ const reposListUl = document.getElementById('repos-list');
 function addSubmitListener() {
   form.addEventListener('submit', (ev)=> {
     ev.preventDefault();
+    reposListUl.innerHTML = '';
     requestUsers();
   });
 }
@@ -58,10 +59,10 @@ function requestRepos(user) {
 }
 
 function renderRepos(data) {
+  reposListUl.innerHTML = '';
   const name = document.createElement('h2');
   name.textContent = "User: " + data[0].owner.login;
   reposListUl.appendChild(name);
-  
   data.forEach(repo => {
     const li = document.createElement('li');
     const p = document.createElement('p');
